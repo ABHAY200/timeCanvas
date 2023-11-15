@@ -3,9 +3,9 @@ import {StatusBar, useColorScheme, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 
 import Root from './src/navigation/root';
-import {colors} from './src/constants/colors';
+import colors from './src/constants/colors';
 
-function App(): JSX.Element {
+const App = (): JSX.Element => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
@@ -22,6 +22,6 @@ function App(): JSX.Element {
       <Root />
     </View>
   );
-}
+};
 
 export default App;
