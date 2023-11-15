@@ -1,0 +1,10 @@
+node_modules
+android
+ios
+metro.config.js
+.eslintrc.js
+babel.config.js
+index.js
+react-native.config.js
+src/utils/checks.ts
+types.d.ts
