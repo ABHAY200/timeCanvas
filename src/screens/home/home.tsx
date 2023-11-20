@@ -1,105 +1,60 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
-import YoutubePlayer from 'react-native-youtube-iframe';
-import LottieView from 'lottie-react-native';
-
-import MusicAnimation from '../../assets/lotties/lottie_1.json';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {Agenda} from 'react-native-calendars';
 
 import Style from './styles';
-
-const musicList = [
-  {
-    id: 1,
-    label: 'Tamil',
-    color: '#218B82',
-    url: 'FoDAUyfCKLA',
-  },
-  {
-    id: 2,
-    label: 'Malayalam',
-    color: '#F27348',
-    url: 'wPV0msG1i7Q',
-  },
-  {
-    id: 3,
-    label: 'Hindi',
-    color: '#554994',
-    url: '-BvfIfhZnak',
-  },
-  {
-    id: 4,
-    label: 'English',
-    color: '#594545',
-    url: '36YnV9STBqc',
-  },
-  {
-    id: 5,
-    label: 'News',
-    color: '#D35D6E',
-    url: 'V_MXWptocIE',
-  },
-  {
-    id: 6,
-    label: 'Verbal',
-    color: '#046582',
-    url: '0_A9J3q3SrE',
-  },
-];
 
 const Home = () => {
   const styles = Style();
 
-  const [musicUrl, setMusicUrl] = useState('wPV0msG1i7Q');
+  const [items, setItems] = useState({
+    '2023-11-20': [{name: 'item 1 - any js object'}],
+    '2023-11-21': [{name: 'item 2 - any js object'}],
+    '2023-11-23': [
+      {name: 'item 3 - any js object'},
+      {name: 'item 3 - any js object'},
+      {name: 'item 3 - any object'},
+    ],
+  });
 
-  const renderYoutubePlayer = () => (
-    <View>
-      <YoutubePlayer
-        height={1}
-        width={1}
-        play
-        videoId={musicUrl}
-        onChangeState={() => null}
-      />
-      <Text style={styles.title}>TimeCanvas</Text>
-    </View>
-  );
-
-  const renderAnimation = () => (
-    <LottieView
-      style={styles.lottieContainer}
-      source={MusicAnimation}
-      autoPlay
-      loop
-    />
-  );
-
-  const renderButton = (buttonProps: {
-    id: number;
-    label: string;
-    color: string;
-    url: string;
-  }) => (
-    <TouchableOpacity
-      style={[styles.button, {backgroundColor: buttonProps.color}]}
-      onPress={() => setMusicUrl(buttonProps.url)}
-      key={buttonProps.id}>
-      <Text style={styles.buttonLabel}>{buttonProps.label}</Text>
+  const renderItem = item => (
+    <TouchableOpacity style={styles.item}>
+      <Text style={{color: 'red'}}>{item?.name}</Text>
     </TouchableOpacity>
   );
 
-  const renderButtons = () => (
-    <ScrollView>
-      <View style={styles.buttonContainer}>
-        {musicList?.map(item => renderButton(item))}
-      </View>
-    </ScrollView>
+  const renderEmptyDate = () => (
+    <View style={styles.emptyDate}>
+      <Text>No events for this day</Text>
+    </View>
   );
+
+  const handleAddItem = day => {
+    // You can customize this function to add more details to the item
+    const newItem = {
+      name: 'New Event',
+      time: '12:00 PM',
+    };
+
+    setItems({
+      ...items,
+      [day.dateString]: [...(items[day.dateString] || []), newItem],
+    });
+  };
 
   return (
     <View style={styles.container}>
-      {renderYoutubePlayer()}
-      {renderAnimation()}
-      {renderButtons()}
+      <Agenda
+        items={items}
+        renderItem={item => renderItem(item)}
+        renderEmptyDate={() => renderEmptyDate()}
+        rowHasChanged={(r1, r2) => r1.name !== r2.name}
+        style={{width: '100%', backgroundColor: 'transparent'}}
+        theme={{calendarBackground: '#28282B'}}
+      />
+      <TouchableOpacity style={styles.addButton} onPress={handleAddItem}>
+        <Text style={styles.addButtonText}>Add Event</Text>
+      </TouchableOpacity>
     </View>
   );
 };

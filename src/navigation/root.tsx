@@ -3,10 +3,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {setTopLevelNavigator} from './navigationUtils';
-import Home from '../screens/home/home';
+import BottomTabs from './tabNavigator';
 
 export type RootStackParamList = {
-  Home: undefined;
+  BottomTabs: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -18,9 +18,9 @@ const Root = () => (
     }}>
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="BottomTabs"
         options={{headerShown: false}}
-        component={Home}
+        component={BottomTabs}
       />
     </Stack.Navigator>
   </NavigationContainer>

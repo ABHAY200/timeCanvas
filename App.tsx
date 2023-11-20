@@ -18,7 +18,9 @@ const App = (): JSX.Element => {
 
   return (
     <View style={backgroundStyle}>
-      <StatusBar />
+      <StatusBar
+        backgroundColor={isDarkMode ? colors.DARK_1 : colors.LIGHT_1}
+      />
       <Root />
     </View>
   );

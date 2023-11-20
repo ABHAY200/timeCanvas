@@ -11,7 +11,6 @@ function Style() {
       flex: 1,
       backgroundColor: isDarkMode ? colors.DARK_1 : colors.LIGHT_1,
       alignItems: 'center',
-      width: '100%',
     },
     lottieContainer: {
       width: WINDOW_WIDTH,
@@ -43,31 +42,6 @@ function Style() {
       fontSize: 16,
       fontFamily: 'Poppins-Medium',
       color: colors.LIGHT_1,
-    },
-    item: {
-      backgroundColor: 'white',
-      flex: 1,
-      borderRadius: 5,
-      padding: 10,
-      marginRight: 10,
-      marginTop: 17,
-    },
-    emptyDate: {
-      height: 15,
-      flex: 1,
-      paddingTop: 30,
-    },
-    addButton: {
-      position: 'absolute',
-      bottom: 20,
-      right: 20,
-      backgroundColor: 'blue',
-      padding: 15,
-      borderRadius: 5,
-    },
-    addButtonText: {
-      color: 'white',
-      fontWeight: 'bold',
     },
   });
 
