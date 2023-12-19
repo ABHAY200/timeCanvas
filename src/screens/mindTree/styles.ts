@@ -1,5 +1,4 @@
 import {StyleSheet, useColorScheme} from 'react-native';
-import {WINDOW_WIDTH} from '../../constants/common';
 
 import colors from '../../constants/colors';
 

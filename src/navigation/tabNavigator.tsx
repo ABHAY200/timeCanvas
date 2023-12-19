@@ -1,11 +1,9 @@
 import React from 'react';
-import {View} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Home from '../screens/home/home';
 import Music from '../screens/music/music';
-import Goals from '../screens/goal/goal';
+import MindTree from '../screens/mindTree/mindTree';
 import HomeActive from '../assets/icons/homeActive.svg';
 import HomeInactive from '../assets/icons/homeInactive.svg';
 import MusicActive from '../assets/icons/musicActive.svg';
@@ -18,7 +16,7 @@ const Tab = createBottomTabNavigator();
 interface icons {
   Home: JSX.Element;
   Music: JSX.Element;
-  Goals: JSX.Element;
+  MindTree: JSX.Element;
 }
 
 const BottomTabs = () => {
@@ -32,8 +30,8 @@ const BottomTabs = () => {
       target: 'Music',
     },
     {
-      name: 'Goals',
-      target: 'Goals',
+      name: 'MindTree',
+      target: 'MindTree',
     },
   ];
 
@@ -41,13 +39,13 @@ const BottomTabs = () => {
     const focusedIcons: icons = {
       Home: <HomeActive />,
       Music: <MusicActive />,
-      Goals: <GoalsActive />,
+      MindTree: <GoalsActive />,
     };
 
     const unfocusedIcons: icons = {
       Home: <HomeInactive />,
       Music: <MusicInactive />,
-      Goals: <GoalsInactive />,
+      MindTree: <GoalsInactive />,
     };
 
     return focused
@@ -58,7 +56,7 @@ const BottomTabs = () => {
   const tabScreens = {
     Home,
     Music,
-    Goals,
+    MindTree,
   };
 
   const styles = {
@@ -86,7 +84,7 @@ const BottomTabs = () => {
   return (
     <Tab.Navigator
       backBehavior="history"
-      initialRouteName="Music"
+      initialRouteName="MindTree"
       screenOptions={({route}) => ({
         tabBarStyle: styles.tabBarStyle,
         tabBarShowLabel: false,
