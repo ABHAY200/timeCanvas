@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {StatusBar, useColorScheme, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import {ToastProvider} from 'react-native-toast-notifications';
 import {Provider} from 'react-redux';
 
 import {getStore} from './src/store';
@@ -20,12 +21,14 @@ const App = (): JSX.Element => {
 
   return (
     <Provider store={getStore().store}>
-      <View style={backgroundStyle}>
-        <StatusBar
-          backgroundColor={isDarkMode ? colors.DARK_1 : colors.LIGHT_1}
-        />
-        <Root />
-      </View>
+      <ToastProvider>
+        <View style={backgroundStyle}>
+          <StatusBar
+            backgroundColor={isDarkMode ? colors.DARK_1 : colors.LIGHT_1}
+          />
+          <Root />
+        </View>
+      </ToastProvider>
     </Provider>
   );
 };

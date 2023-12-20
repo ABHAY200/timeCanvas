@@ -41,7 +41,7 @@ function Style() {
       borderWidth: 1,
       borderColor: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
       minHeight: 100,
-      maxHeight: 200,
+      maxHeight: 180,
     },
     inputLabel: {
       fontSize: 15,
@@ -59,6 +59,7 @@ function Style() {
       borderRadius: 6,
       justifyContent: 'center',
       alignItems: 'center',
+      marginTop: 12,
     },
     buttonText: {
       fontSize: 18,

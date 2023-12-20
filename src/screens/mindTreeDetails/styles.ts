@@ -77,7 +77,7 @@ function Style() {
       maxHeight: 400,
       width: '100%',
       paddingHorizontal: 16,
-      paddingTop: 10,
+      paddingTop: 20,
     },
     scrollView: {
       flex: 1,
