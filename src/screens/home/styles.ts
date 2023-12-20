@@ -61,7 +61,6 @@ function Style() {
       position: 'absolute',
       bottom: 20,
       right: 20,
-      backgroundColor: 'blue',
       padding: 15,
       borderRadius: 5,
     },

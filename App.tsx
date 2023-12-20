@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {StatusBar, useColorScheme, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import {Provider} from 'react-redux';
 
+import {getStore} from './src/store';
 import Root from './src/navigation/root';
 import colors from './src/constants/colors';
 
@@ -17,12 +19,14 @@ const App = (): JSX.Element => {
   };
 
   return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        backgroundColor={isDarkMode ? colors.DARK_1 : colors.LIGHT_1}
-      />
-      <Root />
-    </View>
+    <Provider store={getStore().store}>
+      <View style={backgroundStyle}>
+        <StatusBar
+          backgroundColor={isDarkMode ? colors.DARK_1 : colors.LIGHT_1}
+        />
+        <Root />
+      </View>
+    </Provider>
   );
 };
 

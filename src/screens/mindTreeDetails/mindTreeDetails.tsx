@@ -22,10 +22,18 @@ const MindTreeDetails = ({route}) => {
     </TouchableOpacity>
   );
 
+  const createChild = parentNode => {
+    navigation.push('CreateMindTree', {parentNode});
+  };
+
   return (
     <View style={styles.container}>
-      <Text>abhay</Text>
-      <Text>{mindData?.title}</Text>
+      <View style={styles.titleContainer}>
+        <Text>{mindData?.title}</Text>
+        <TouchableOpacity onPress={() => createChild(mindData)}>
+          <Text>Add Child</Text>
+        </TouchableOpacity>
+      </View>
       {mindData?.description && (
         <Text style={styles.description}>{mindData.description}</Text>
       )}
@@ -60,5 +68,9 @@ const styles = StyleSheet.create({
     marginRight: 30,
     margin: 10,
     padding: 10,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });

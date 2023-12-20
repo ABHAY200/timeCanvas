@@ -1,109 +1,17 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-
-const mindTree = [
-  {
-    id: '1',
-    title: 'test 1',
-    description: 'desc 1',
-    subtree: [
-      {
-        id: '11',
-        title: 'test 11',
-        description: 'desc 11',
-        subtree: [
-          {
-            id: '111',
-            title: 'test 111',
-            description: 'desc 111',
-          },
-        ],
-      },
-      {
-        id: '12',
-        title: 'test 12',
-        description: 'desc 12',
-      },
-    ],
-  },
-  {
-    id: '2',
-    title: 'test 2',
-    description: 'desc 2',
-    subtree: [
-      {
-        id: '21',
-        title: 'test 21',
-        description: 'desc 21',
-      },
-      {
-        id: '22',
-        title: 'test 22',
-        description: 'desc 22',
-      },
-    ],
-  },
-  {
-    id: '3',
-    title: 'test 3',
-    description: 'desc 3',
-  },
-  {
-    id: '4',
-    title: 'test 4',
-    description: 'desc 4',
-  },
-  {
-    id: '5',
-    title: 'test 5',
-    description: 'desc 5',
-  },
-  {
-    id: '6',
-    title: 'test 6',
-    description: 'desc 6',
-  },
-  {
-    id: '7',
-    title: 'test 7',
-    description: 'desc 7',
-  },
-  {
-    id: '8',
-    title: 'test 8',
-    description: 'desc 8',
-  },
-  {
-    id: '9',
-    title: 'test 9',
-    description: 'desc 9',
-  },
-  {
-    id: '10',
-    title: 'test 10',
-    description: 'desc 10',
-  },
-  {
-    id: '11',
-    title: 'test 11',
-    description: 'desc 11',
-  },
-  {
-    id: '12',
-    title: 'test 12',
-    description: 'desc 12',
-  },
-];
+import {useSelector, useDispatch} from 'react-redux';
+import {setMindTree} from '../../reducers/mindTreeSlice';
+import AddButton from '../../assets/icons/addButton.svg';
+import Remove from '../../assets/icons/remove.svg';
+import Style from './styles';
 
 const MindTree = () => {
+  const styles = Style();
   const navigation: any = useNavigation();
+  const dispatch = useDispatch();
+  const mindTree = useSelector(state => state.mindTree.mindTreeList);
 
   const navigateToDetails = mindData => {
     navigation.push('MindTreeDetails', {mindData});
@@ -113,12 +21,22 @@ const MindTree = () => {
     navigation.push('CreateMindTree', {id: null});
   };
 
+  const onDeleteItem = (nodeId: string) => {
+    const updatedMindTree = mindTree?.filter(item => item.id !== nodeId);
+    dispatch(setMindTree([...updatedMindTree]));
+  };
+
   const treeItem = node => (
     <TouchableOpacity
       onPress={() => navigateToDetails(node)}
       key={node.id}
       style={styles.node}>
-      <Text>{node.title}</Text>
+      <View style={styles.nodeTitleContainer}>
+        <Text style={styles.nodeTitle}>{node.title}</Text>
+        <TouchableOpacity onPress={() => onDeleteItem(node.id)}>
+          <Remove width={16} height={16} />
+        </TouchableOpacity>
+      </View>
       {node?.description && (
         <Text style={styles.description}>{node.description}</Text>
       )}
@@ -128,46 +46,16 @@ const MindTree = () => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text>Mind tree</Text>
+        <Text style={styles.title}>Mind tree</Text>
         <TouchableOpacity onPress={createNew}>
-          <Text>Create</Text>
+          <AddButton width={18} height={18} />
         </TouchableOpacity>
       </View>
-
-      <ScrollView>{mindTree?.map(item => treeItem(item))}</ScrollView>
+      <ScrollView style={styles.scrollView}>
+        {mindTree?.map(item => treeItem(item))}
+      </ScrollView>
     </View>
   );
 };
 
 export default MindTree;
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    flex: 1,
-    backgroundColor: '#000',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  node: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    margin: 5,
-  },
-  subtree: {
-    marginLeft: 10,
-  },
-  description: {
-    fontStyle: 'italic',
-  },
-  subNode: {
-    borderWidth: 1,
-    borderColor: 'red',
-    marginRight: 30,
-    margin: 10,
-    padding: 10,
-  },
-});
