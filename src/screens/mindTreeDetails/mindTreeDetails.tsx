@@ -1,8 +1,11 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
+import AddButton from '../../assets/icons/addButton.svg';
+import Style from './styles';
 
 const MindTreeDetails = ({route}) => {
+  const styles = Style();
   const navigation: any = useNavigation();
   const mindData = route.params?.mindData || {};
 
@@ -15,9 +18,13 @@ const MindTreeDetails = ({route}) => {
       onPress={() => navigateToDetails(node)}
       key={node.id}
       style={styles.node}>
-      <Text>{node.title}</Text>
+      <View style={styles.nodeTitleContainer}>
+        <Text style={styles.nodeTitle}>{node.title}</Text>
+      </View>
       {node?.description && (
-        <Text style={styles.description}>{node.description}</Text>
+        <Text numberOfLines={2} style={styles.description}>
+          {node.description}
+        </Text>
       )}
     </TouchableOpacity>
   );
@@ -29,48 +36,24 @@ const MindTreeDetails = ({route}) => {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text>{mindData?.title}</Text>
-        <TouchableOpacity onPress={() => createChild(mindData)}>
-          <Text>Add Child</Text>
+        <Text style={styles.title}>{mindData?.title}</Text>
+        {mindData?.description?.length > 0 && (
+          <ScrollView>
+            <Text style={styles.mainDescription}>{mindData?.description}</Text>
+          </ScrollView>
+        )}
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => createChild(mindData)}>
+          <AddButton width={18} height={18} />
+          <Text style={styles.buttonText}>Add Thread</Text>
         </TouchableOpacity>
       </View>
-      {mindData?.description && (
-        <Text style={styles.description}>{mindData.description}</Text>
-      )}
-      {mindData?.subtree?.map(item => treeItem(item))}
+      <ScrollView style={styles.scrollView}>
+        {mindData?.subtree?.map(item => treeItem(item))}
+      </ScrollView>
     </View>
   );
 };
 
 export default MindTreeDetails;
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    flex: 1,
-    backgroundColor: '#000',
-  },
-  node: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    padding: 10,
-    margin: 5,
-  },
-  subtree: {
-    marginLeft: 10,
-  },
-  description: {
-    fontStyle: 'italic',
-  },
-  subNode: {
-    borderWidth: 1,
-    borderColor: 'red',
-    marginRight: 30,
-    margin: 10,
-    padding: 10,
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-});

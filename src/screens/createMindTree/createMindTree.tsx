@@ -48,7 +48,7 @@ const CreateMindTree = ({route}) => {
       const newNode = {
         id: `${parentNode.id}_${(parentNode.subtree?.length || 0) + 1}`,
         title,
-        description: '',
+        description,
         subtree: [],
       };
       let updatedMindTreeList = [...mindTreeList];
@@ -76,14 +76,14 @@ const CreateMindTree = ({route}) => {
     <View style={styles.container}>
       <View style={styles.inputContainer}>
         <Text style={styles.title}>Log Your Thought</Text>
-        <Text style={styles.inputLabel}>title</Text>
+        <Text style={styles.inputLabel}>Title</Text>
         <TextInput
           numberOfLines={1}
           style={styles.textInput}
           value={title}
           onChangeText={onChangeTitle}
         />
-        <Text style={styles.inputLabel}>thought</Text>
+        <Text style={styles.inputLabel}>Thought</Text>
         <TextInput
           style={styles.textArea}
           textAlignVertical="top"

@@ -38,7 +38,9 @@ const MindTree = () => {
         </TouchableOpacity>
       </View>
       {node?.description && (
-        <Text style={styles.description}>{node.description}</Text>
+        <Text numberOfLines={2} style={styles.description}>
+          {node.description}
+        </Text>
       )}
     </TouchableOpacity>
   );
