@@ -14,7 +14,6 @@ export const mindTreeSlice = createSlice({
   reducers: {
     setMindTree: (state, action: PayloadAction<any>) => {
       state.mindTreeList = action.payload;
-      console.log('setMindTree', state.mindTreeList);
     },
     resetMindTreeSlice: () => initialState,
   },

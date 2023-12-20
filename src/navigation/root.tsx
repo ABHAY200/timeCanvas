@@ -5,12 +5,14 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {setTopLevelNavigator} from './navigationUtils';
 import MindTreeDetails from '../screens/mindTreeDetails/mindTreeDetails';
 import CreateMindTree from '../screens/createMindTree/createMindTree';
+import ConsolidatedThoughts from '../screens/consolidatedThoughts/consolidatedThoughts';
 import BottomTabs from './tabNavigator';
 
 export type RootStackParamList = {
   BottomTabs: undefined;
   MindTreeDetails: undefined;
   CreateMindTree: undefined;
+  ConsolidatedThoughts: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -35,6 +37,11 @@ const Root = () => (
         name="CreateMindTree"
         options={{headerShown: false}}
         component={CreateMindTree}
+      />
+      <Stack.Screen
+        name="ConsolidatedThoughts"
+        options={{headerShown: false}}
+        component={ConsolidatedThoughts}
       />
     </Stack.Navigator>
   </NavigationContainer>

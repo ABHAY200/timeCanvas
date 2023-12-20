@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {setMindTree} from '../../reducers/mindTreeSlice';
 import AddButton from '../../assets/icons/addButton.svg';
 import Remove from '../../assets/icons/remove.svg';
+import Expand from '../../assets/icons/expand.svg';
 import Style from './styles';
 
 const MindTree = () => {
@@ -26,6 +27,25 @@ const MindTree = () => {
     dispatch(setMindTree([...updatedMindTree]));
   };
 
+  const openExpandedView = tree => {
+    const descriptions = tree?.description ? [tree?.description] : [];
+    const recursiveGetDescriptions = nodes => {
+      nodes.forEach(node => {
+        if (node.description) {
+          descriptions.push(node.description);
+        }
+        if (node.subtree) {
+          recursiveGetDescriptions(node.subtree);
+        }
+      });
+    };
+    recursiveGetDescriptions(tree.subtree);
+    navigation.push('ConsolidatedThoughts', {
+      mindList: descriptions,
+      treeTitle: tree.title,
+    });
+  };
+
   const treeItem = node => (
     <TouchableOpacity
       onPress={() => navigateToDetails(node)}
@@ -33,9 +53,18 @@ const MindTree = () => {
       style={styles.node}>
       <View style={styles.nodeTitleContainer}>
         <Text style={styles.nodeTitle}>{node.title}</Text>
-        <TouchableOpacity onPress={() => onDeleteItem(node.id)}>
-          <Remove width={16} height={16} />
-        </TouchableOpacity>
+        <View style={styles.nodeIconContainer}>
+          <TouchableOpacity
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            onPress={() => openExpandedView(node)}>
+            <Expand width={16} height={16} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            onPress={() => onDeleteItem(node.id)}>
+            <Remove width={16} height={16} />
+          </TouchableOpacity>
+        </View>
       </View>
       {node?.description && (
         <Text numberOfLines={2} style={styles.description}>

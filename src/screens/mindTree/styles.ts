@@ -49,6 +49,12 @@ function Style() {
       fontFamily: 'Poppins-Regular',
       color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
     },
+    nodeIconContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: 50,
+      alignItems: 'center',
+    },
     subtree: {
       marginLeft: 10,
     },
