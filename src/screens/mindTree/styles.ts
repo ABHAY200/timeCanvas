@@ -60,7 +60,7 @@ function Style() {
     },
     description: {
       fontSize: 14,
-      fontWeight: '600',
+      fontWeight: '500',
       fontFamily: 'Poppins-Regular',
       paddingHorizontal: 6,
     },

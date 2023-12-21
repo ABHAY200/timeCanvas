@@ -22,6 +22,7 @@ function Style() {
     itemContainer: {
       flex: 1,
       flexDirection: 'row',
+      width: '100%',
     },
     itemText: {
       fontSize: 16,
@@ -31,6 +32,9 @@ function Style() {
       marginTop: -5,
       marginBottom: 10,
       paddingRight: 40,
+    },
+    scrollView: {
+      width: '100%',
     },
   });
 

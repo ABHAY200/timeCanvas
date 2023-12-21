@@ -19,7 +19,9 @@ const ConsolidatedThoughts = ({route}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{treeTitle}</Text>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}>
         {mindList?.map(item => renderListItem(item))}
       </ScrollView>
     </View>

@@ -55,7 +55,7 @@ function Style() {
     },
     mainDescription: {
       fontSize: 15,
-      fontWeight: '600',
+      fontWeight: '500',
       fontFamily: 'Poppins-Regular',
       color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
     },

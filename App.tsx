@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StatusBar, useColorScheme, View} from 'react-native';
+import {SafeAreaView, StatusBar, useColorScheme, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 import {ToastProvider} from 'react-native-toast-notifications';
 import {Provider} from 'react-redux';
@@ -22,12 +22,14 @@ const App = (): JSX.Element => {
   return (
     <Provider store={getStore().store}>
       <ToastProvider>
-        <View style={backgroundStyle}>
-          <StatusBar
-            backgroundColor={isDarkMode ? colors.DARK_1 : colors.LIGHT_1}
-          />
-          <Root />
-        </View>
+        <SafeAreaView style={backgroundStyle}>
+          <View style={backgroundStyle}>
+            <StatusBar
+              backgroundColor={isDarkMode ? colors.DARK_1 : colors.LIGHT_1}
+            />
+            <Root />
+          </View>
+        </SafeAreaView>
       </ToastProvider>
     </Provider>
   );
