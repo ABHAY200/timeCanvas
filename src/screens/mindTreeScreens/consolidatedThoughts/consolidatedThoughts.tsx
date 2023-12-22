@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, ScrollView} from 'react-native';
 
-import Thought from '../../assets/icons/thought.svg';
+import Thought from '../../../assets/icons/thought.svg';
 import Style from './styles';
 
 const ConsolidatedThoughts = ({route}) => {

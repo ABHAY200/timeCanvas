@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import {useToast} from 'react-native-toast-notifications';
-import {setMindTree} from '../../reducers/mindTreeSlice';
+import {setMindTree} from '../../../reducers/mindTreeSlice';
 import Style from './styles';
 
 const CreateMindTree = ({route}) => {

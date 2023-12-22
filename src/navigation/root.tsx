@@ -3,9 +3,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {setTopLevelNavigator} from './navigationUtils';
-import MindTreeDetails from '../screens/mindTreeDetails/mindTreeDetails';
-import CreateMindTree from '../screens/createMindTree/createMindTree';
-import ConsolidatedThoughts from '../screens/consolidatedThoughts/consolidatedThoughts';
+import MindTreeDetails from '../screens/mindTreeScreens/mindTreeDetails/mindTreeDetails';
+import CreateMindTree from '../screens/mindTreeScreens/createMindTree/createMindTree';
+import ConsolidatedThoughts from '../screens/mindTreeScreens/consolidatedThoughts/consolidatedThoughts';
 import BottomTabs from './tabNavigator';
 
 export type RootStackParamList = {

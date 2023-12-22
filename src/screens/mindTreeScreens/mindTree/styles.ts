@@ -1,6 +1,6 @@
 import {StyleSheet, useColorScheme} from 'react-native';
 
-import colors from '../../constants/colors';
+import colors from '../../../constants/colors';
 
 function Style() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -11,24 +11,30 @@ function Style() {
       backgroundColor: isDarkMode ? colors.DARK_1 : colors.LIGHT_1,
       alignItems: 'center',
     },
-    absoluteContainer: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      bottom: 0,
-      right: 0,
+    titleContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      padding: 20,
       width: '100%',
-      height: '100%',
-      padding: 10,
+    },
+    title: {
+      fontSize: 20,
+      fontFamily: 'Poppins-Regular',
+      color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
+    },
+    scrollView: {
+      flex: 1,
+      width: '100%',
+      paddingHorizontal: 10,
     },
     node: {
       borderWidth: 1,
       borderRadius: 8,
       borderColor: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
       padding: 10,
+      margin: 5,
       maxHeight: 200,
-      width: '100%',
-      marginBottom: 10,
     },
     nodeTitleContainer: {
       flexDirection: 'row',
@@ -43,25 +49,18 @@ function Style() {
       fontFamily: 'Poppins-Regular',
       color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
     },
+    nodeIconContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      width: 50,
+      alignItems: 'center',
+    },
     subtree: {
       marginLeft: 10,
     },
-    title: {
-      fontSize: 20,
-      fontFamily: 'Poppins-Regular',
-      color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
-      width: '100%',
-      textAlign: 'left',
-    },
-    mainDescription: {
-      fontSize: 15,
-      fontWeight: '500',
-      fontFamily: 'Poppins-Regular',
-      color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
-    },
     description: {
       fontSize: 14,
-      fontWeight: '600',
+      fontWeight: '500',
       fontFamily: 'Poppins-Regular',
       paddingHorizontal: 6,
     },
@@ -71,31 +70,6 @@ function Style() {
       marginRight: 30,
       margin: 10,
       padding: 10,
-    },
-    titleContainer: {
-      flexDirection: 'column',
-      maxHeight: 400,
-      width: '100%',
-      paddingHorizontal: 16,
-      paddingTop: 20,
-    },
-    scrollView: {
-      flex: 1,
-      width: '100%',
-      paddingHorizontal: 10,
-    },
-    buttonContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
-      marginBottom: 20,
-      marginTop: 4,
-    },
-    buttonText: {
-      fontSize: 16,
-      fontFamily: 'Poppins-Regular',
-      color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
-      paddingLeft: 10,
-      paddingTop: 4,
     },
   });
 

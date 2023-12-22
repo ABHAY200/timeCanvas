@@ -2,10 +2,10 @@ import React from 'react';
 import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useSelector, useDispatch} from 'react-redux';
-import {setMindTree} from '../../reducers/mindTreeSlice';
-import AddButton from '../../assets/icons/addButton.svg';
-import Remove from '../../assets/icons/remove.svg';
-import Expand from '../../assets/icons/expand.svg';
+import {setMindTree} from '../../../reducers/mindTreeSlice';
+import AddButton from '../../../assets/icons/addButton.svg';
+import Remove from '../../../assets/icons/remove.svg';
+import Expand from '../../../assets/icons/expand.svg';
 import Style from './styles';
 
 const MindTree = () => {

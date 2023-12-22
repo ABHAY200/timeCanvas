@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Home from '../screens/home/home';
 import Music from '../screens/music/music';
-import MindTree from '../screens/mindTree/mindTree';
+import MindTree from '../screens/mindTreeScreens/mindTree/mindTree';
 import HomeActive from '../assets/icons/homeActive.svg';
 import HomeInactive from '../assets/icons/homeInactive.svg';
 import MusicActive from '../assets/icons/musicActive.svg';
