@@ -84,7 +84,7 @@ const BottomTabs = () => {
   return (
     <Tab.Navigator
       backBehavior="history"
-      initialRouteName="MindTree"
+      initialRouteName="Home"
       screenOptions={({route}) => ({
         tabBarStyle: styles.tabBarStyle,
         tabBarShowLabel: false,

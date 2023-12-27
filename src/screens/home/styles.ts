@@ -58,11 +58,12 @@ function Style() {
       paddingTop: 30,
     },
     addButton: {
-      position: 'absolute',
-      bottom: 20,
-      right: 20,
-      padding: 15,
+      width: WINDOW_WIDTH - 20,
+      height: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
       borderRadius: 5,
+      backgroundColor: colors.PRIMARY_01,
     },
     addButtonText: {
       color: 'white',
