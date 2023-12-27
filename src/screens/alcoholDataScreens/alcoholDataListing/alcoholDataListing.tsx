@@ -17,6 +17,10 @@ const AlcoholDataListing = () => {
     navigation.push('AddAlcoholData');
   };
 
+  const viewAlcoholGraph = () => {
+    navigation.push('AlcoholGraph');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Alcohol Logger</Text>
@@ -37,7 +41,9 @@ const AlcoholDataListing = () => {
         ))}
       </ScrollView>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.viewGraphButton}>
+        <TouchableOpacity
+          onPress={viewAlcoholGraph}
+          style={styles.viewGraphButton}>
           <Text style={styles.viewGraphButtonLabel}>View Graph</Text>
         </TouchableOpacity>
         <TouchableOpacity

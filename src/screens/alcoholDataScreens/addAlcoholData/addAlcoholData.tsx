@@ -97,6 +97,8 @@ const AddAlcoholData = () => {
         modal
         mode="date"
         open={open}
+        minimumDate={new Date('2023-12-01')}
+        maximumDate={new Date()}
         date={date}
         onConfirm={selectedDate => {
           setOpen(false);

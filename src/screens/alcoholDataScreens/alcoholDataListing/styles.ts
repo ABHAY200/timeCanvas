@@ -37,12 +37,12 @@ function Style() {
       backgroundColor: colors.WARNING,
     },
     cardLabel: {
-      fontSize: 18,
+      fontSize: 16,
       fontFamily: 'Poppins-Regular',
       color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
     },
     cardValue: {
-      fontSize: 18,
+      fontSize: 16,
       fontFamily: 'Poppins-Regular',
       color: isDarkMode ? colors.LIGHT_1 : colors.DARK_1,
     },

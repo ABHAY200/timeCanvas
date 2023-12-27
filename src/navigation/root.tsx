@@ -8,6 +8,7 @@ import CreateMindTree from '../screens/mindTreeScreens/createMindTree/createMind
 import ConsolidatedThoughts from '../screens/mindTreeScreens/consolidatedThoughts/consolidatedThoughts';
 import AlcoholDataListing from '../screens/alcoholDataScreens/alcoholDataListing/alcoholDataListing';
 import AddAlcoholData from '../screens/alcoholDataScreens/addAlcoholData/addAlcoholData';
+import AlcoholGraph from '../screens/alcoholDataScreens/alcoholGraph/alcoholGraph';
 
 import BottomTabs from './tabNavigator';
 
@@ -18,6 +19,7 @@ export type RootStackParamList = {
   ConsolidatedThoughts: undefined;
   AlcoholDataListing: undefined;
   AddAlcoholData: undefined;
+  AlcoholGraph:  undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -57,6 +59,11 @@ const Root = () => (
         name="AddAlcoholData"
         options={{headerShown: false}}
         component={AddAlcoholData}
+      />
+      <Stack.Screen
+        name="AlcoholGraph"
+        options={{headerShown: false}}
+        component={AlcoholGraph}
       />
     </Stack.Navigator>
   </NavigationContainer>
